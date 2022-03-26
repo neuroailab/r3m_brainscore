@@ -6,8 +6,8 @@ from model_tools.activations.pytorch import PytorchWrapper
 from model_tools.brain_transformation import ModelCommitment
 from model_tools.check_submission import check_models
 
-
 from r3m import load_r3m
+
 
 ####preprocessing
 def load_preprocess_images(image_filepaths, image_size, **kwargs):
