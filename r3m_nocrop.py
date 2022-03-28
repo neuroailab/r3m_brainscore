@@ -19,9 +19,9 @@ def get_model_list():
     If the submission contains only one model, return a one item list.
     :return: a list of model string names
     """
-    return ["r3m_resnet50",
-            "r3m_resnet34",
-            "r3m_resnet18"
+    return ["r3m_resnet50_nocrop",
+            "r3m_resnet34_nocrop",
+            "r3m_resnet18_nocrop"
     ]
 
 
@@ -34,7 +34,9 @@ def get_model(name):
     :param name: the name of the model to fetch
     :return: the model instance
     """
-    mapping = {"r3m_resnet50": "resnet50", "r3m_resnet34": "resnet34", "r3m_resnet18": "resnet18"}
+    mapping = {"r3m_resnet50_nocrop": "resnet50",
+               "r3m_resnet34_nocrop": "resnet34",
+               "r3m_resnet18_nocrop": "resnet18"}
     modelid = mapping[name]
     model = load_r3m(modelid).module
 
@@ -72,7 +74,9 @@ def get_layers(name):
     :param name: the name of the model, to return the layers for
     :return: a list of strings containing all layers, that should be considered as brain area.
     """
-    units_mapping = {"r3m_resnet50": [3, 4, 6, 3], "r3m_resnet34": [3, 4, 6, 3], "r3m_resnet18": [2, 2, 2, 2]}
+    units_mapping = {"r3m_resnet50_nocrop": [3, 4, 6, 3],
+                     "r3m_resnet34_nocrop": [3, 4, 6, 3],
+                     "r3m_resnet18_nocrop": [2, 2, 2, 2]}
     units = units_mapping[name]
     prefix = "convnet"
     layers = [f'{prefix}.conv1'] + \
